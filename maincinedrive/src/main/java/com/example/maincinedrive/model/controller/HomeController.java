@@ -10,4 +10,11 @@ public class HomeController {
     public String index() {
         return "home";
     }
+
+    // Ruta cartelera
+    @GetMapping("/cartelera")
+    public String carteleraPage() {
+        return "cartelera/cartelera";
+    }
+
 }
