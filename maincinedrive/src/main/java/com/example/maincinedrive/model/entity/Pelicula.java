@@ -16,6 +16,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Transient;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
@@ -39,8 +40,7 @@ public class Pelicula {
 
     @NotBlank
     private String youtubeTrailerId;
-    @NotBlank
-    private String categoria;
+
     @NotBlank
     private String duracionPelicula;
 
@@ -51,23 +51,44 @@ public class Pelicula {
     @JoinTable(name = "genero_pelicula", joinColumns = @JoinColumn(name = "id_pelicula"), inverseJoinColumns = @JoinColumn(name = "id_genero"))
     private List<Genero> generos;
 
+    @NotNull
+    @ManyToOne
+    @JoinColumn(name = "id_categoria")
+    private Categoria categoria;
+
     @Transient
     private MultipartFile portada;
 
-    public String getCategoria() {
-        return categoria;
+    public Pelicula() {
     }
 
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
-    }
-
-    public String getDuracionPelicula() {
-        return duracionPelicula;
-    }
-
-    public void setDuracionPelicula(String duracionPelicula) {
+    public Pelicula(Integer id, @NotBlank String titulo, @NotBlank String sinopsis, @NotNull LocalDate fechaEstreno,
+            @NotBlank String youtubeTrailerId, @NotBlank String duracionPelicula, String rutaPortada,
+            @NotEmpty List<Genero> generos, @NotEmpty Categoria categoria, MultipartFile portada) {
+        this.id = id;
+        this.titulo = titulo;
+        this.sinopsis = sinopsis;
+        this.fechaEstreno = fechaEstreno;
+        this.youtubeTrailerId = youtubeTrailerId;
         this.duracionPelicula = duracionPelicula;
+        this.rutaPortada = rutaPortada;
+        this.generos = generos;
+        this.categoria = categoria;
+        this.portada = portada;
+    }
+
+    public Pelicula(@NotBlank String titulo, @NotBlank String sinopsis, @NotNull LocalDate fechaEstreno,
+            @NotBlank String youtubeTrailerId, @NotBlank String duracionPelicula, String rutaPortada,
+            @NotEmpty List<Genero> generos, @NotEmpty Categoria categoria, MultipartFile portada) {
+        this.titulo = titulo;
+        this.sinopsis = sinopsis;
+        this.fechaEstreno = fechaEstreno;
+        this.youtubeTrailerId = youtubeTrailerId;
+        this.duracionPelicula = duracionPelicula;
+        this.rutaPortada = rutaPortada;
+        this.generos = generos;
+        this.categoria = categoria;
+        this.portada = portada;
     }
 
     public Integer getId() {
@@ -110,6 +131,14 @@ public class Pelicula {
         this.youtubeTrailerId = youtubeTrailerId;
     }
 
+    public String getDuracionPelicula() {
+        return duracionPelicula;
+    }
+
+    public void setDuracionPelicula(String duracionPelicula) {
+        this.duracionPelicula = duracionPelicula;
+    }
+
     public String getRutaPortada() {
         return rutaPortada;
     }
@@ -126,43 +155,19 @@ public class Pelicula {
         this.generos = generos;
     }
 
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+
     public MultipartFile getPortada() {
         return portada;
     }
 
     public void setPortada(MultipartFile portada) {
-        this.portada = portada;
-    }
-
-    public Pelicula() {
-    }
-
-    public Pelicula(Integer id, @NotBlank String titulo, @NotBlank String sinopsis, @NotNull LocalDate fechaEstreno,
-            @NotBlank String youtubeTrailerId, @NotBlank String categoria, @NotBlank String duracionPelicula,
-            String rutaPortada, @NotEmpty List<Genero> generos, MultipartFile portada) {
-        this.id = id;
-        this.titulo = titulo;
-        this.sinopsis = sinopsis;
-        this.fechaEstreno = fechaEstreno;
-        this.youtubeTrailerId = youtubeTrailerId;
-        this.categoria = categoria;
-        this.duracionPelicula = duracionPelicula;
-        this.rutaPortada = rutaPortada;
-        this.generos = generos;
-        this.portada = portada;
-    }
-
-    public Pelicula(@NotBlank String titulo, @NotBlank String sinopsis, @NotNull LocalDate fechaEstreno,
-            @NotBlank String youtubeTrailerId, @NotBlank String categoria, @NotBlank String duracionPelicula,
-            String rutaPortada, @NotEmpty List<Genero> generos, MultipartFile portada) {
-        this.titulo = titulo;
-        this.sinopsis = sinopsis;
-        this.fechaEstreno = fechaEstreno;
-        this.youtubeTrailerId = youtubeTrailerId;
-        this.categoria = categoria;
-        this.duracionPelicula = duracionPelicula;
-        this.rutaPortada = rutaPortada;
-        this.generos = generos;
         this.portada = portada;
     }
 

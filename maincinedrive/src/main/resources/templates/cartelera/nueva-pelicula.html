@@ -2,12 +2,113 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head th:insert="fragments/head :: head"></head>
+<style>
+    form .invalid-feedback {
+        display: block;
+    }
+</style>
 
 <body>
-    <header th:insert="fragments/header :: header"></header>
+    <header class="header" th:insert="fragments/header_static :: header_static">
+    </header>
 
+    <section class="form-container-main">
+
+        <div class="form-container">
+            <h1>Formulario <span style="color: #E50246;">Nueva Pelicula</span></h1>
+            <form action="" method="post" th:object="${pelicula}" enctype="multipart/form-data">
+
+                <div class="form-card-1 form-card">
+                    <label for="titulo">Titulo: </label>
+                    <input type="text" id="titulo" autocomplete="off" th:field="*{titulo}">
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('titulo')}" th:errors="*{titulo}"></div>
+                </div>
+                <div class="form-card-2 form-card">
+                    <label for="sinopsis">Sinopsis: </label>
+                    <textarea name="" id="sinopsis" th:field="*{sinopsis}"></textarea>
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('sinopsis')}" th:errors="*{sinopsis}">
+                    </div>
+                </div>
+                <div class="form-card-1 form-card">
+                    <label for="duracionPelicula">Duracion de la Pelicula: </label>
+                    <input type="text" id="duracionPelicula" autocomplete="off" th:field="*{duracionPelicula}">
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('duracionPelicula')}"
+                        th:errors="*{duracionPelicula}"></div>
+                </div>
+
+                <div class="form-card-3 form-card">
+                    <div class="card-form-1">
+                        <label for="fechaEstreno">Fecha de Estreno: </label>
+
+                        <input type="date" id="fechaEstreno" th:field="*{fechaEstreno}">
+
+
+                        <div class="invalid-feedback" th:if="${#fields.hasErrors('fechaEstreno')}"
+                            th:errors="*{fechaEstreno}"></div>
+                    </div>
+                    <div class="card-form-2">
+
+                        <div class="custom-file-input">
+                            <label for="portada">Portada</label>
+                            <input type="file" id="portada" name="portada" th:field="*{portada}">
+                            <span class="file-info"><i class="fa-solid fa-image" style="color: #ffffff;"></i></span>
+                        </div>
+                        <div class="invalid-feedback" th:if="${#fields.hasErrors('portada')}" th:errors="*{portada}">
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-card-4 form-card">
+                    <div class="card-form-3">
+                        <label for="youtubeTrailerId">ID Trailer: </label>
+                        <input type="text" id="youtubeTrailerId" th:field="*{youtubeTrailerId}">
+                        <div class="invalid-feedback" th:if="${#fields.hasErrors('youtubeTrailerId')}"
+                            th:errors="*{youtubeTrailerId}"></div>
+                    </div>
+                    <div class="card-form-4">
+                        <label for="categorias">Categoria de Edad: </label>
+                        <select name="categorias" id="categorias" th:field="*{categoria}">
+                            <option th:each="categoria : ${categoria}" th:value="${categoria.id}"
+                                th:text="${categoria.categoria}">
+                            </option>
+                        </select>
+                        <div class="invalid-feedback" th:if="${#fields.hasErrors('categoria')}"
+                            th:errors="*{categoria}"></div>
+                    </div>
+
+                </div>
+
+                <div class="form-card-6 form-card">
+                    <div>
+                        <label for="generos">Genero: </label>
+                        <select name="generos" id="generos" th:field="*{generos}" multiple>
+                            <option th:each="genero : ${generos}" th:value="${genero.id}" th:text="${genero.titulo}">
+                            </option>
+                        </select>
+                        <div class="invalid-feedback" th:if="${#fields.hasErrors('generos')}" th:errors="*{generos}">
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="form-card-8 form-card">
+                    <button type="submit">Guardar</button>
+                </div>
+
+            </form>
+
+
+        </div>
+    </section>
 
     <footer th:insert="fragments/footer :: footer"></footer>
+    <script>
+        var selectElement = document.getElementById('generos');
+
+        // Ajusta la altura del select en función del número de opciones
+        selectElement.style.height = (selectElement.options.length * 1.5) + 'em';
+    </script>
 </body>
 
 </html>

@@ -18,6 +18,13 @@
   border-bottom: 1px solid white;
 }
 
+.header {
+  width: 100%;
+  z-index: 10;
+  background-color: #24262B;
+  border-bottom: 1px solid white;
+}
+
 .nav__main {
   display: flex;
   justify-content: center;
@@ -700,4 +707,280 @@ footer ul {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
 
-/* .welcome-card-2 */
+
+/* Form Pelicula Nueva Page  */
+.form-container-main {
+
+  display: flex;
+  justify-content: center;
+
+  align-items: center;
+  margin: 100px 0;
+}
+
+.form-card label {
+  font-family: Montserrat, sans-serif;
+
+  margin-top: 0px;
+  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.form-card-1 input {
+  outline: none;
+  height: 46px;
+  font-family: 'Lato', sans-serif;
+  font-size: 21px;
+  border-radius: 10px;
+  border: 1px solid #858787;
+  padding-left: 10px;
+
+}
+
+
+
+.form-container h1 {
+  background-color: #24262B;
+  border-top-right-radius: 30px;
+  border-top-left-radius: 30px;
+  padding: 20px;
+  color: white;
+  font-family: Montserrat, sans-serif;
+  font-weight: 900;
+}
+
+.form-container {
+
+  border-radius: 30px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .13), 0 1px 1px 0 rgba(0, 0, 0, .11);
+
+}
+
+.form-container form {
+
+  padding: 10px 30px 30px 30px;
+  width: auto;
+}
+
+.form-card-1 input {
+  width: 100%;
+}
+
+.form-card-2 textarea {
+  width: 100%;
+  height: 100px;
+}
+
+.form-card-1 label,
+.form-card-2 label,
+.form-card-3 label,
+.form-card-4 label,
+.form-card-6 label {
+  display: block;
+}
+
+#generos {
+  height: auto;
+  /* Permite que el tamaño se ajuste automáticamente */
+  overflow-y: hidden;
+  /* Oculta la barra de desplazamiento vertical */
+  /* Otros estilos según sea necesario */
+}
+
+.form-card-6 select {
+  width: 100%;
+  outline: none;
+  border: none;
+}
+
+.form-card-3,
+.form-card-4 {
+  display: flex;
+  justify-content: space-between;
+
+
+}
+
+.card-form-1 input {
+  display: flex;
+  width: 100%;
+  outline: none;
+  border: none;
+  text-align: left;
+  padding: 0 10px;
+  height: 46px;
+  align-items: center;
+}
+
+
+.card-form-1 label {
+  display: flex;
+  align-items: center;
+  height: 50%;
+
+}
+
+
+
+.card-form-1 {
+  padding-bottom: 4px;
+  width: 50%;
+
+
+}
+
+
+
+
+
+.card-form-3 {
+  width: 50%;
+
+
+}
+
+.card-form-3 input {
+  width: 100%;
+}
+
+.card-form-4 {
+  width: 47.5%;
+  text-align: center;
+
+}
+
+.card-form-4 select {
+  width: 100%;
+}
+
+.custom-file-input {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.custom-file-input input[type="file"] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+
+.custom-file-input label,
+.custom-file-input .file-info {
+  display: block;
+  text-align: center;
+  padding: 10px;
+}
+
+.custom-file-input .file-info {
+  background-color: #e50246;
+  font-family: 'Lato', sans-serif;
+  font-size: 18px;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  transition: 0.6s all ease;
+}
+
+
+
+.form-card-8 {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.form-card-8 button {
+  width: 100%;
+}
+
+.form-card-2 {
+  margin-top: 10px;
+}
+
+.form-card-2 textarea {
+  outline: none;
+
+  height: 66px;
+  font-family: 'Lato', sans-serif;
+  font-size: 21px;
+  border-radius: 10px;
+  border: 1px solid #858787;
+  padding-left: 10px;
+  padding-top: 10px;
+  transition: 0.7s all ease;
+}
+
+.form-card-2 textarea:focus {
+  height: 120px;
+}
+
+.card-form-2 {
+  width: 47.7% !important;
+}
+
+.custom-file-input {
+  width: 100%;
+}
+
+.form-card-3 input {
+  outline: none;
+
+  font-family: 'Lato', sans-serif;
+  font-size: 17px;
+  padding-left: 10px;
+  border-radius: 10px;
+  border: 1px solid #858787;
+
+}
+
+.form-card-4 {
+  margin-top: 10px;
+}
+
+.form-card-4 input,
+.form-card-4 select {
+  outline: none;
+
+  font-family: 'Lato', sans-serif;
+  font-size: 17px;
+  padding-left: 10px;
+  border-radius: 10px;
+  border: 1px solid #858787;
+  height: 46px;
+}
+
+.form-card-6 {
+  margin-top: 10px;
+}
+
+.form-card-6 select {
+  outline: none;
+
+  font-family: 'Lato', sans-serif;
+  font-size: 17px;
+  padding-left: 10px;
+  border-radius: 10px;
+  border: 1px solid #858787;
+  padding-top: 10px;
+}
+
+.form-card-8 {
+  margin-top: 20px;
+}
+
+.form-card-8 button {
+  background-color: #e50246;
+  padding: 10px;
+  font-family: 'Lato', sans-serif;
+  font-size: 24px;
+  text-transform: uppercase;
+  color: white;
+  font-weight: 800;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+
+}

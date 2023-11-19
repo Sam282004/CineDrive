@@ -2,10 +2,17 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head th:insert="fragments/head :: head"></head>
+<style>
+
+</style>
 
 <body>
-    <header th:insert="fragments/header :: header"></header>
+    <header class="header" th:insert="fragments/header_static :: header_static">
+    </header>
 
+    <section class="a">
+        <a th:href="@{/cartelera/peliculas/nuevo}">hola</a>
+    </section>
 
     <footer th:insert="fragments/footer :: footer"></footer>
 </body>

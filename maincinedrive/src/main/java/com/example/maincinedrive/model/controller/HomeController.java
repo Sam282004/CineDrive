@@ -12,9 +12,9 @@ public class HomeController {
     }
 
     // Ruta cartelera
-    @GetMapping("/cartelera")
-    public String carteleraPage() {
-        return "cartelera/cartelera";
-    }
+    // @GetMapping("/home/cartelera")
+    // public String carteleraPage() {
+    // return "cartelera/cartelera";
+    // }
 
 }
