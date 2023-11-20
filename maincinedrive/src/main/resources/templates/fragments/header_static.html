@@ -6,12 +6,28 @@
         <div class="nav__left">
             <div class="content__left">
                 <li><a th:href="@{/}" class="avance"> Inicio</a></li>
-                <li><a th:href="@{/cartelera}" class="avance"> Cartelera</a></li>
+                <li><a th:href="@{/cartelera/listados-pelicula}" class="avance"> Cartelera</a></li>
             </div>
 
             <div class="content__right">
                 <li><a href="#" class="avance"> Confiteria</a></li>
                 <li><a href="#" class="avance"> Contactenos</a></li>
+            </div>
+            <div class="btn-group administracion">
+                <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Administracion
+                </button>
+                <ul class="dropdown-menu">
+                    <a th:href="@{/cartelera/peliculas/nuevo}">
+                        <li>Agregar Peliculas</li>
+                    </a>
+                    <a th:href="@{/cartelera}">
+                        <li>Listado Peliculas</li>
+                    </a>
+
+                </ul>
+
             </div>
         </div>
 

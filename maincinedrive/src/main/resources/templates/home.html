@@ -6,118 +6,7 @@
 
 <body>
     <header th:insert="fragments/header :: header"></header>
-    <div id="carouselExampleIndicators" class="carousel slide">
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-                aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                aria-label="Slide 3"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
-                aria-label="Slide 4"></button>
-        </div>
-        <div class="carousel-inner">
-            <div class="carousel-item active d-item">
-                <img th:src="@{../images/autocinefondo.jpg}" class="d-block w-100 d-img" alt="..." />
-                <div class="carousel-caption top-0 mt-4">
-                    <div class="carousel_text">
-                        <span class="back"></span>
-                        <h1 class>Digimon <br />Adventure 02: <br />The
-                            Beginning</h1>
-                        <p>
-                            Nuevos DigiDestined emergen para enfrentar
-                            desafíos digitales y
-                            proteger ambos mundos, demostrando el poder de
-                            la amistad y la
-                            evolución en su épico viaje.
-                        </p>
-                        <div style="margin-top: 30px">
-                            <a class="text-uppercase btn-reproducir"><i class="fa-solid fa-play"></i> Reproducir</a>
-                            <a class="text-uppercase"><i class="fa-solid fa-ticket" style="color: #ffffff"></i>
-                                Comprar</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item d-item">
-                <img th:src="@{../images/autocinefondo.jpg}" class="d-block w-100 d-img" alt="..." />
-                <div class="carousel-caption top-0 mt-4">
-                    <div class="carousel_text">
-                        <span class="back"></span>
-                        <h1 class>Digimon <br />Adventure 02: <br />The
-                            Beginning</h1>
-                        <p>
-                            Nuevos DigiDestined emergen para enfrentar
-                            desafíos digitales y
-                            proteger ambos mundos, demostrando el poder de
-                            la amistad y la
-                            evolución en su épico viaje.
-                        </p>
-                        <div style="margin-top: 30px">
-                            <a class="text-uppercase btn-reproducir"><i class="fa-solid fa-play"></i> Reproducir</a>
-                            <a class="text-uppercase"><i class="fa-solid fa-ticket" style="color: #ffffff"></i>
-                                Comprar</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item d-item">
-                <img th:src="@{../images/autocinefondo.jpg}" class="d-block w-100 d-img" alt="..." />
-                <div class="carousel-caption top-0 mt-4">
-                    <div class="carousel_text">
-                        <span class="back"></span>
-                        <h1 class>Digimon <br />Adventure 02: <br />The
-                            Beginning</h1>
-                        <p>
-                            Nuevos DigiDestined emergen para enfrentar
-                            desafíos digitales y
-                            proteger ambos mundos, demostrando el poder de
-                            la amistad y la
-                            evolución en su épico viaje.
-                        </p>
-                        <div style="margin-top: 30px">
-                            <a class="text-uppercase btn-reproducir"><i class="fa-solid fa-play"></i> Reproducir</a>
-                            <a class="text-uppercase"><i class="fa-solid fa-ticket" style="color: #ffffff"></i>
-                                Comprar</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item d-item">
-                <img th:src="@{../images/autocinefondo.jpg}" class="d-block w-100 d-img" alt="..." />
-                <div class="carousel-caption top-0 mt-4">
-                    <div class="carousel_text">
-                        <span class="back"></span>
-                        <h1 class>Digimon <br />Adventure 02: <br />The
-                            Beginning</h1>
-                        <p>
-                            Nuevos DigiDestined emergen para enfrentar
-                            desafíos digitales y
-                            proteger ambos mundos, demostrando el poder de
-                            la amistad y la
-                            evolución en su épico viaje.
-                        </p>
-                        <div style="margin-top: 30px">
-                            <a class="text-uppercase btn-reproducir"><i class="fa-solid fa-play"></i> Reproducir</a>
-                            <a class="text-uppercase"><i class="fa-solid fa-ticket" style="color: #ffffff"></i>
-                                Comprar</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-            data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-            data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-    </div>
+    <div th:insert="fragments/banner :: banner"></div>
 
     <div class="welcome-container-main">
         <div class="welcome-container">
@@ -142,7 +31,7 @@
         <div class="contenedor-titulo-controles">
             <span class="option">
                 <h3 class="text-uppercase first-child">Cartelera Semanal</h3>
-                <p class="information text-uppercase"><a href="">Ver Cartelera</a></p>
+                <p class="information text-uppercase"><a th:href="@{/cartelera/listados-pelicula}">Ver Cartelera</a></p>
             </span>
 
             <div class="indicadores"></div>
@@ -154,73 +43,15 @@
             </button>
             <div class="contenedor-carousel">
                 <div class="carousel">
-                    <div class="pelicula">
+                    <div class="pelicula" th:each="pelicula : ${peliculasNoEstreno}" th:object="${pelicula}">
+                        <a th:href="@{/peliculas/{id}(id=*{id})}" style="text-decoration:none;">
 
-                        <a href="#">
-                            <img th:src="@{../images/cartelera/pelicula1.jpg}" alt /></a>
+                            <img th:src="@{../assets/{filename}(filename=*{rutaPortada})}" th:alt="*{titulo}" />
 
+
+                        </a>
                     </div>
 
-                    <div class="pelicula">
-
-                        <a href="#"> <img th:src="@{../images/cartelera/pelicula2.jpg}" alt /></a>
-                    </div>
-                    <div class="pelicula">
-
-                        <a href="#"> <img th:src="@{../images/cartelera/pelicula3.jpg}" alt /></a>
-                    </div>
-                    <div class="pelicula">
-                        <a href="#"><img th:src="@{../images/cartelera/pelicula4.jpg}" alt /></a>
-                    </div>
-                    <div class="pelicula">
-                        <a href="#"><img th:src="@{../images/cartelera/pelicula5.jpg}" alt /></a>
-                    </div>
-                    <div class="pelicula">
-                        <a href="#"><img th:src="@{../images/cartelera/pelicula6.jpeg}" alt /></a>
-                    </div>
-                    <div class="pelicula">
-                        <a href="#"><img th:src="@{../images/cartelera/pelicula7.jpg}" alt /></a>
-                    </div>
-                    <div class="pelicula">
-                        <a href="#"><img th:src="@{../images/cartelera/pelicula1.jpg}" alt /></a>
-                    </div>
-                    <div class="pelicula">
-                        <a href="#"><img th:src="@{../images/cartelera/pelicula2.jpg}" alt /></a>
-                    </div>
-                    <div class="pelicula">
-                        <a href="#"><img th:src="@{../images/cartelera/pelicula3.jpg}" alt /></a>
-                    </div>
-                    <div class="pelicula">
-                        <a href="#"><img th:src="@{../images/cartelera/pelicula4.jpg}" alt /></a>
-                    </div>
-                    <div class="pelicula">
-                        <a href="#"><img th:src="@{../images/cartelera/pelicula5.jpg}" alt /></a>
-                    </div>
-                    <div class="pelicula">
-                        <a href="#"><img th:src="@{../images/cartelera/pelicula1.jpg}" alt /></a>
-                    </div>
-                    <div class="pelicula">
-                        <a href="#"><img th:src="@{../images/cartelera/pelicula2.jpg}" alt /></a>
-                    </div>
-                    <div class="pelicula">
-                        <a href="#"><img th:src="@{../images/cartelera/pelicula3.jpg}" alt /></a>
-                    </div>
-                    <div class="pelicula">
-                        <a href="#"><img th:src="@{../images/cartelera/pelicula4.jpg}" alt /></a>
-                    </div>
-                    <div class="pelicula">
-                        <a href="#"><img th:src="@{../images/cartelera/pelicula5.jpg}" alt /></a>
-                    </div>
-                    <div class="pelicula">
-                        <a href="#"><img th:src="@{../images/cartelera/pelicula1.jpg}" alt /></a>
-                    </div>
-                    <div class="pelicula">
-                        <a href="#"><img th:src="@{../images/cartelera/pelicula2.jpg}" alt /></a>
-                    </div>
-                    <div class="pelicula">
-
-                        <a href="#"><img th:src="@{../images/cartelera/pelicula3.jpg}" alt /></a>
-                    </div>
 
                 </div>
             </div>

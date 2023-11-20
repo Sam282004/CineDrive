@@ -71,13 +71,71 @@
   text-decoration: none;
   font-size: 20px;
   font-weight: 300;
-  transition: all 0.3s ease;
+  transition: all 0.1s ease;
   /* Corregido */
+}
+
+.administracion button {
+  background: none !important;
+  outline: none;
+  border: none;
+  font-size: 20px;
+  font-weight: 300;
+  font-family: "Josefin Sans" !important;
+}
+
+.administracion button:hover {
+  font-weight: bold;
+  font-size: 22px;
+  border-bottom: 4px solid #e50246;
+  background: none !important;
+}
+
+.administracion button:focus {
+  font-weight: bold;
+  border-bottom: 4px solid #e50246;
+  font-size: 22px;
+  background: none !important;
+}
+
+.dropdown-menu {
+  background-color: #24262B !important;
+
+  text-align: center !important;
+
+}
+
+.dropdown-menu li {
+
+  margin-bottom: 10px;
+  height: 50%;
+}
+
+.dropdown-menu li:hover,
+.dropdown-menu a:hover {
+  background-color: white !important;
+  color: black !important;
+}
+
+.dropdown-menu a:hover {
+  color: black !important;
+}
+
+.dropdown-menu a {
+  text-decoration: none !important;
+
+  color: white !important;
+  font-size: 16px !important;
+  font-weight: 300 !important;
+  font-family: "Josefin Sans" !important;
+
 }
 
 .content__left li a:hover,
 .content__right li a:hover {
+  border-bottom: 4px solid #e50246;
   font-weight: bold;
+
   font-size: 22px;
 }
 
@@ -273,6 +331,30 @@
   padding: 20px 0;
   overflow: hidden;
   scroll-behavior: smooth;
+}
+
+.pelicula2 {
+  position: relative;
+  /* Otros estilos según sea necesario */
+}
+
+.pelicula2Estreno {
+  position: absolute;
+  width: 100%;
+
+  overflow: hidden;
+  bottom: 0;
+  text-align: center;
+  background-color: #e50246;
+  color: white;
+  font-family: "Josefin Sans";
+  font-size: 30px;
+
+  /* Agregamos una transición para suavizar el cambio de ancho */
+}
+
+.pelicula2:hover .pelicula2Estreno {
+  width: 100%;
 }
 
 .cartelera-semanal .contenedor-carousel .carousel {
@@ -712,7 +794,7 @@ footer ul {
 .form-container-main {
 
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
 
   align-items: center;
   margin: 100px 0;
@@ -753,8 +835,7 @@ footer ul {
 .form-container {
 
   border-radius: 30px;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .13), 0 1px 1px 0 rgba(0, 0, 0, .11);
-
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .form-container form {
@@ -982,5 +1063,210 @@ footer ul {
   border-radius: 10px;
   border: none;
   outline: none;
+
+}
+
+.form-container-img {
+
+  text-align: center;
+}
+
+
+
+.form-container-img h3 {
+  font-family: "Lilita One", sans-serif;
+  font-size: 40px;
+}
+
+.form-container-img p {
+  font-family: 'Lato', sans-serif;
+  font-size: 24px;
+}
+
+
+
+
+/* Listado Peliculas */
+.list-pelicula-head {
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top: 80px;
+  margin-bottom: 60px;
+}
+
+.box {
+  position: absolute;
+  background-color: #e50246;
+  z-index: -1;
+
+  height: 66px;
+  width: 540px;
+}
+
+.list-pelicula-head h2 {
+  font-family: Montserrat, sans-serif;
+  font-weight: 900;
+  margin-left: 20px;
+  font-size: 40px;
+}
+
+
+.btn-agregar-pelicula {
+
+  text-decoration: none;
+
+  text-transform: uppercase;
+
+
+  text-align: center;
+  font-family: Montserrat, sans-serif;
+  font-weight: 900;
+  font-size: 30px;
+}
+
+.table thead tr th {
+  background-color: #24262B !important;
+  border: 1px solid #24262B;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  font-size: 30px;
+}
+
+.table tbody {
+  border: 1px solid black;
+}
+
+.table tbody tr td {
+  border: 1px solid black;
+}
+
+.table tbody tr td h3 {
+  font-weight: 800;
+  margin-top: 20px;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+.table tbody tr td p {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 20px;
+}
+
+.categoria-genero-container {
+
+  display: flex;
+
+  justify-content: space-between;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 15px;
+
+}
+
+.container-genero,
+.container-categoria {
+  padding: 10px;
+  color: white;
+  background-color: #e50246;
+  border-radius: 10px;
+  margin-right: 10px;
+
+}
+
+.container-date {
+  text-align: center !important;
+  font-family: "Josefin Sans", sans-serif !important;
+  font-size: 25px !important;
+  vertical-align: middle !important;
+}
+
+.container-editar-eliminar {
+  vertical-align: middle !important;
+  font-size: 50px !important;
+
+  text-align: center !important;
+}
+
+.container-titulo-sinopsis {
+
+  padding-bottom: 15px !important;
+}
+
+
+.page-link {
+  outline: none !important;
+  border: none !important;
+}
+
+/* Listado Peliculas */
+
+
+/* Cartelera */
+.card-body {
+  background-color: #24262B;
+  color: white !important;
+  font-size: 30px !important;
+  font-family: "Josefin Sans", sans-serif !important;
+  text-align: center !important;
+  transition: 0.6s all ease;
+}
+
+.cas:hover .card-body {
+
+
+  background-color: #e50246 !important;
+
+}
+
+/* detalle pelicula  */
+.detalle-titulo h2 {
+  padding: 20px;
+  background-color: #24262B;
+  color: white;
+  font-size: 25px;
+  font-family: Montserrat, sans-serif;
+  font-weight: 900;
+
+}
+
+.container-datos {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.generoCont {
+  background-color: #e50246;
+
+  font-size: 15px;
+  padding: 10px;
+  color: white;
+  border-radius: 10px;
+  margin-right: 10px;
+  font-family: "Josefin Sans", sans-serif !important;
+}
+
+.duracionCont {
+  background-color: #24262B;
+  font-size: 15px;
+  padding: 10px;
+  color: white;
+  border-radius: 10px;
+  margin-right: 10px;
+  font-family: "Josefin Sans", sans-serif !important;
+
+}
+
+.detalle-parrafo {
+  font-size: 20px;
+  font-family: "Josefin Sans", sans-serif !important;
+
+}
+
+.btrn {
+  font-size: 20px !important;
+  font-family: "Josefin Sans", sans-serif !important;
 
 }

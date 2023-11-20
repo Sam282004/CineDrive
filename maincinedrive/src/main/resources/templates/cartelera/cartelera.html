@@ -7,12 +7,64 @@
 </style>
 
 <body>
-    <header class="header" th:insert="fragments/header_static :: header_static">
-    </header>
+    <header th:insert="fragments/header :: header"></header>
+    <div th:insert="fragments/banner :: banner"></div>
 
-    <section class="a">
-        <a th:href="@{/cartelera/peliculas/nuevo}">hola</a>
-    </section>
+    <div class="container my-5">
+        <div class="row ">
+            <div class="row">
+                <div class="col-md-3 my-2 cas" th:each="pelicula : ${peliculas}" th:object="${pelicula}">
+                    <a th:href="@{/peliculas/{id}(id=*{id})}" class="card shadow-lg" style="text-decoration: none;">
+                        <img th:src="@{/assets/{filename}(filename=*{rutaPortada})}" th:alt="*{titulo}"
+                            class="card-img-top">
+                        <div class="card-body">
+                            <h2 class="card-title fs-6" th:text="*{titulo}"></h2>
+
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- <div class="row mt-5" th:with="page=${peliculas}">
+                <div class="col-sm-6">
+                    <div sd:pagination-sumary></div>
+                    <div class="col-sm-6">
+                        <nav>
+                            <ul class="pagination" sd:pagination="full"></ul>
+                        </nav>
+                    </div>
+                </div>
+            </div> -->
+            <div class="row mt-5" th:if="${peliculas.totalPages > 1}">
+                <div class="col-sm-12">
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination">
+                            <li th:if="${peliculas.hasPrevious()}" class="page-item">
+                                <a th:href="@{${'/cartelera/listados-pelicula?page=' + (peliculas.number - 1)}}"
+                                    aria-label="Previous" class="page-link page-container"
+                                    style="background-color: white; color: #e50246;">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li th:each="i : ${#numbers.sequence(0, peliculas.totalPages - 1)}" class="page-item"
+                                th:classappend="${peliculas.number == i} ? 'active' : ''">
+                                <a th:href="@{${'/cartelera/listados-pelicula?page=' + i}}" class="page-link"
+                                    th:style="${peliculas.number == i} ? 'background-color: #e50246; color: white;' : 'color: #e50246;'"
+                                    th:text="${i + 1}"></a>
+                            </li>
+                            <li th:if="${peliculas.hasNext()}" class="page-item">
+                                <a th:href="@{${'/cartelera/listados-pelicula?page=' + (peliculas.number + 1)}}"
+                                    aria-label="Next" class="page-link page-container"
+                                    style="background-color: white; color: #e50246;">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+    </div>
 
     <footer th:insert="fragments/footer :: footer"></footer>
 </body>
