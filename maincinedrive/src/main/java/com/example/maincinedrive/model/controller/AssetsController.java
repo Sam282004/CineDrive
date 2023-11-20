@@ -18,7 +18,6 @@ public class AssetsController {
 
     @GetMapping("/{filename:.+}")
     public Resource obtenerRecurso(@PathVariable("filename") String filename) {
-
         return almacenServicesImpl.cargarRecurso(filename);
     }
 }

@@ -27,48 +27,49 @@ import jakarta.persistence.EntityNotFoundException;
 @RequestMapping("")
 public class HomeController {
 
-    @Autowired
-    private PeliculaRepository peliculaRepository;
+        @Autowired
+        private PeliculaRepository peliculaRepository;
 
-    // @GetMapping({ "/", "/index", "/home" })
-    // public String index() {
-    // return "home";
-    // }
-    @GetMapping({ "/", "/index", "/home" })
-    public ModelAndView verPaginaPeliculas(
-            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaEstreno) {
-        if (fechaEstreno == null) {
-            fechaEstreno = LocalDate.now();
+        // @GetMapping({ "/", "/index", "/home" })
+        // public String index() {
+        // return "home";
+        // }
+        @GetMapping({ "/", "/index", "/home" })
+        public ModelAndView verPaginaPeliculas(
+                        @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaEstreno) {
+                if (fechaEstreno == null) {
+                        fechaEstreno = LocalDate.now();
+                }
+
+                List<Pelicula> peliculasEstreno = peliculaRepository.findByFechaEstrenoAfter(fechaEstreno);
+                List<Pelicula> peliculasNoEstreno = peliculaRepository
+                                .findByFechaEstrenoBeforeAndFechaEstrenoIsNotNull(LocalDate.now());
+
+                return new ModelAndView("home")
+                                .addObject("peliculasEstreno", peliculasEstreno)
+                                .addObject("peliculasNoEstreno", peliculasNoEstreno)
+                                .addObject("fechaEstreno", fechaEstreno);
         }
 
-        List<Pelicula> peliculasEstreno = peliculaRepository.findByFechaEstrenoAfter(fechaEstreno);
-        List<Pelicula> peliculasNoEstreno = peliculaRepository
-                .findByFechaEstrenoBeforeAndFechaEstrenoIsNotNull(LocalDate.now());
+        @GetMapping("/cartelera/listados-pelicula")
+        public ModelAndView carteleraFullPage(
+                        @PageableDefault(sort = "fechaEstreno", direction = Sort.Direction.ASC) Pageable pageable) {
 
-        return new ModelAndView("home")
-                .addObject("peliculasEstreno", peliculasEstreno)
-                .addObject("peliculasNoEstreno", peliculasNoEstreno)
-                .addObject("fechaEstreno", fechaEstreno);
-    }
+                Page<Pelicula> peliculas = peliculaRepository.findAll(pageable);
+                return new ModelAndView("cartelera/cartelera")
+                                .addObject("peliculas", peliculas);
 
-    @GetMapping("/cartelera/listados-pelicula")
-    public ModelAndView carteleraFullPage(
-            @PageableDefault(sort = "fechaEstreno", direction = Sort.Direction.ASC) Pageable pageable) {
+        }
 
-        Page<Pelicula> peliculas = peliculaRepository.findAll(pageable);
-        return new ModelAndView("cartelera/cartelera")
-                .addObject("peliculas", peliculas);
+        @GetMapping("/peliculas/{id}")
+        public ModelAndView detallePelicula(@PathVariable Integer id) {
+                Pelicula pelicula = peliculaRepository.findById(id)
+                                .orElseThrow(() -> new EntityNotFoundException(
+                                                "No se encontró la película con ID: " + id));
 
-    }
+                return new ModelAndView("cartelera/detalle-pelicula")
+                                .addObject("pelicula", pelicula);
 
-    @GetMapping("/peliculas/{id}")
-    public ModelAndView detallePelicula(@PathVariable Integer id) {
-        Pelicula pelicula = peliculaRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("No se encontró la película con ID: " + id));
-
-        return new ModelAndView("cartelera/detalle-pelicula")
-                .addObject("pelicula", pelicula);
-
-    }
+        }
 
 }
