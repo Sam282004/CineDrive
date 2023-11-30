@@ -1270,3 +1270,106 @@ footer ul {
   font-family: "Josefin Sans", sans-serif !important;
 
 }
+
+
+/* Estilos de filtrados */
+.contenedor-filtro-main {
+  display: flex;
+  justify-content: center;
+
+
+}
+
+.contenedor-filtro {
+  margin: 40px 0px;
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+
+  /* border-right: 1px solid black; */
+
+}
+
+.contenedor-filtro select {
+  min-height: 500px;
+  outline: none;
+  overflow: hidden;
+  border: none;
+
+
+}
+
+.label-filtro {
+  background-color: #e50246;
+  color: white;
+  padding: 10px;
+  font-family: Montserrat, sans-serif;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  font-weight: 800;
+}
+
+.contenedor-filtro option {
+  padding: 20px;
+
+
+}
+
+.btn-filtrar {
+  outline: none;
+  border: none;
+  background-color: #e50246;
+  font-size: 25px;
+  font-family: Montserrat, sans-serif;
+  font-weight: 800;
+
+  color: white;
+}
+
+/* Parqueo Autos */
+.botones {
+  display: flex;
+  justify-content: space-between;
+}
+
+.be {
+  background-color: #5C2F79 !important;
+  border: 1px #5C2F79 solid !important;
+}
+
+.lugar-selecionado {
+  margin-top: 20px;
+  border-bottom: 1px solid black;
+  color: black !important;
+}
+
+.lugar-selecionado p {
+
+  padding: 10px;
+  font-size: 25px;
+}
+
+.head-modal {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.head-modal button {
+  outline: none;
+  border: none;
+  font-size: 25px;
+  background-color: transparent !important;
+
+}
+
+.head-modal h2 {
+  background-color: #e50246;
+  padding: 20px;
+  font-family: Montserrat, sans-serif;
+  font-weight: 800;
+  font-size: 30px;
+  color: white;
+}

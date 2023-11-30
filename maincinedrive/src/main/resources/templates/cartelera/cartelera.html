@@ -3,37 +3,73 @@
 
 <head th:insert="fragments/head :: head"></head>
 <style>
+    .row {
+        width: 95%;
 
+        display: flex;
+        /* Ajusta este valor según lo pequeño que quieras que sean las tarjetas */
+
+    }
+
+    @media (min-width: 1400px) {
+        .container {
+            max-width: 1000px;
+        }
+    }
+
+    .container,
+    .container-fluid,
+    .container-lg,
+    .container-md,
+    .container-sm,
+    .container-xl,
+    .container-xxl {
+
+        width: 70% !important;
+    }
 </style>
 
 <body>
     <header th:insert="fragments/header :: header"></header>
     <div th:insert="fragments/banner :: banner"></div>
 
-    <div class="container my-5">
-        <div class="row ">
-            <div class="row">
-                <div class="col-md-3 my-2 cas" th:each="pelicula : ${peliculas}" th:object="${pelicula}">
-                    <a th:href="@{/peliculas/{id}(id=*{id})}" class="card shadow-lg" style="text-decoration: none;">
-                        <img th:src="@{/assets/{filename}(filename=*{rutaPortada})}" th:alt="*{titulo}"
-                            class="card-img-top">
-                        <div class="card-body">
-                            <h2 class="card-title fs-6" th:text="*{titulo}"></h2>
+    <form action="#" method="get" class="contenedor-filtro-main">
+        <div class="contenedor-filtro">
+            <label for="genero" class="label-filtro">Filtrar por Género:</label>
+            <select name="genero" id="genero" multiple>
+                <option value="">Todos</option>
+                <option value="Acción">Acción </option>
+                <option value="Aventuras">Aventuras</option>
+                <option value="Comedia">Comedia</option>
+                <option value="Drama">Drama</option>
+                <option value="Fantasía">Fantasía</option>
+                <option value="Documental">Documental</option>
+                <option value="Terror">Terror</option>
+            </select>
+            <button type="submit" class="btn-filtrar">Filtrar</i></button>
+        </div>
 
+
+
+        <!-- Mostrar las películas -->
+
+        <div class="container my-4 mx-3">
+            <div class="row">
+                <div th:if="${peliculas.isEmpty()}">
+                    <p>No se encontraron películas.</p>
+                </div>
+                <div class="col-md-4 my-3 cas crd" th:each="pelicula : ${peliculas.content}">
+                    <a th:href="@{/peliculas/{id}(id=${pelicula.id})}" class="card shadow-lg"
+                        style="text-decoration: none;">
+                        <img th:src="@{/assets/{filename}(filename=${pelicula.rutaPortada})}"
+                            th:alt="${pelicula.titulo}" class="card-img-top" height="400px">
+                        <div class="card-body">
+                            <h2 class="card-title fs-6" th:text="${pelicula.titulo}"></h2>
                         </div>
                     </a>
                 </div>
             </div>
-            <!-- <div class="row mt-5" th:with="page=${peliculas}">
-                <div class="col-sm-6">
-                    <div sd:pagination-sumary></div>
-                    <div class="col-sm-6">
-                        <nav>
-                            <ul class="pagination" sd:pagination="full"></ul>
-                        </nav>
-                    </div>
-                </div>
-            </div> -->
+
             <div class="row mt-5" th:if="${peliculas.totalPages > 1}">
                 <div class="col-sm-12">
                     <nav aria-label="Page navigation">
@@ -64,8 +100,14 @@
             </div>
         </div>
 
-    </div>
-
+    </form>
+    <script>
+        // $(document).ready(function () {
+        //     $('#genero li').click(function () {
+        //         $(this).toggleClass('selected');
+        //     });
+        // });
+    </script>
     <footer th:insert="fragments/footer :: footer"></footer>
 </body>
 
