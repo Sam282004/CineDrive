@@ -13,16 +13,16 @@
                 <li><a href="#" class="avance"> Sedes</a></li>
                 <li><a href="#" class="avance"> Contactenos</a></li>
             </div>
-            <div class="btn-group administracion">
+            <div class="btn-group administracion" sec:authorize="isAuthenticated() and hasRole('ROLE_ADMIN')">
                 <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"
                     aria-expanded="false">
                     Administracion
                 </button>
                 <ul class="dropdown-menu">
-                    <a th:href="@{/cartelera/peliculas/nuevo}">
+                    <a th:href="@{/administracion/peliculas/nuevo}">
                         <li>Agregar Peliculas</li>
                     </a>
-                    <a th:href="@{/cartelera}">
+                    <a th:href="@{/administracion}">
                         <li>Listado Peliculas</li>
                     </a>
 
@@ -32,8 +32,42 @@
         </div>
 
         <div class="nav__right">
-            <div class="login__conteiner">
-                <i class="fa-solid fa-user" style="color: #ffffff"></i>
+
+
+
+            <div class="login__conteiner__login no-dropdown-arrow" sec:authorize="!isAuthenticated()">
+                <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Unete!
+                </button>
+                <ul class="dropdown-menu">
+                    <a th:href="@{/login}">
+                        <li>Iniciar Sesión</li>
+                    </a>
+                    <a th:href="@{/registro}">
+                        <li>Registro</li>
+                    </a>
+                </ul>
+            </div>
+
+
+            <div class="login__conteiner" sec:authorize="isAuthenticated()">
+                <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false" th:if="${nombre}">
+                    <i class="fa-solid fa-user"></i>
+                    <span th:text="${nombre}"></span>
+                    <!-- Bloque condicional para mostrar el texto adicional si el usuario es admin -->
+                    <span th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}"
+                        class="admin-text">(Admin)</span>
+                </button>
+                <ul class="dropdown-menu">
+                    <a href="#">
+                        <li>Configuracion</li>
+                    </a>
+                    <a th:href="@{/logout}">
+                        <li>Cerrar Sesión</li>
+                    </a>
+                </ul>
             </div>
         </div>
     </nav>

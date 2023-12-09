@@ -1,0 +1,16 @@
+INSERT INTO comida (nombre, descripcion, imagen_url, precio) 
+VALUES
+('Hamburguesa', 'Deliciosa hamburguesa con queso y vegetales frescos', 'Hamburguesa.jpeg',10.00),
+('Papas Fritas', 'Deliciosas papas fritas saladas.', 'papafrita.jpeg', 5.00),
+('Agua Mineral', 'Refrescante Agua Mineral', 'agua_mineral.jpeg', 3.00),
+('Gaseosa Coca-Cola', 'Refrescante Gaseosa Coca-Cola', 'gaseosa_cocacola.jpeg', 3.00),
+('Gaseosa Narajana', 'Refrescante Gaseosa sabor naranja', 'gaseosa_naranja.jpeg', 3.00),
+('Combo Plus', 'Hamburguesa , Papas Fritas, Bebida a su Eleccion', 'combo_hamburguesa.jpeg', 15.00),
+('Hot Dog', 'Hot dogs clásicos con salchichas, pan y condimentos.', 'hot_dog.jpeg', 7.50),
+('Nachos con Queso', 'Nachos crujientes cubiertos con queso derretido.', 'nachos_queso.jpeg', 20.00),
+('Palomitas de Maiz', 'Palomitas de maíz recién hechas y saladas.', 'palomitas.jpeg', 5.00),
+('Tajada de Pizza ', 'Porcion de pizza de queso y jamon', 'tajada_pizza.jpeg', 4.00),
+('Pizza Entera', 'Pizza recién horneada de queso y jamon', 'pizza_completa.jpeg', 22.00);
+
+
+

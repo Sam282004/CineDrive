@@ -16,8 +16,8 @@
         <div class="list-pelicula-head">
             <span class="box"></span>
             <h2><span style="color: white;">Listado de las Peliculas &nbsp;</span> - Administracion</h2>
-            <a href="/cartelera/peliculas/nuevo" class="btn-agregar-pelicula"><i class="fa-solid fa-square-plus fa-2xl"
-                    style="color: #e50246;"></i></a>
+            <a href="/administracion/peliculas/nuevo" class="btn-agregar-pelicula"><i
+                    class="fa-solid fa-square-plus fa-2xl" style="color: #e50246;"></i></a>
         </div>
         <table class="table ">
             <thead>
@@ -59,7 +59,7 @@
                     </td>
                     <td class="container-editar-eliminar">
                         <div>
-                            <a th:href="@{/cartelera/peliculas/{id}/editar(id=*{id})}"><i
+                            <a th:href="@{/administracion/peliculas/{id}/editar(id=*{id})}"><i
                                     class="fa-solid fa-pen-to-square" style="color: #3cd78f;"></i></a>
                         </div>
                     </td>
@@ -69,7 +69,7 @@
                                 th:onclick="'eliminarPelicula(' + *{id} +')'"><i class="fa-solid fa-trash"
                                     style="color: #e50246;"></i></a>
                             <form th:id="'eliminarPeliculaForm' + *{id}"
-                                th:action="@{/cartelera/peliculas/{id}/eliminar(id=*{id})}" method="post"
+                                th:action="@{/administracion/peliculas/{id}/eliminar(id=*{id})}" method="post"
                                 class="d-none">
                             </form>
                         </div>
@@ -82,19 +82,19 @@
                 <nav aria-label="Page navigation">
                     <ul class="pagination">
                         <li th:if="${peliculas.hasPrevious()}" class="page-item">
-                            <a th:href="@{${'/cartelera?page=' + (peliculas.number - 1)}}" aria-label="Previous"
+                            <a th:href="@{${'/administracion?page=' + (peliculas.number - 1)}}" aria-label="Previous"
                                 class="page-link page-container" style="background-color: white; color: #e50246;">
                                 <span aria-hidden="true">&laquo;</span>
                             </a>
                         </li>
                         <li th:each="i : ${#numbers.sequence(0, peliculas.totalPages - 1)}" class="page-item"
                             th:classappend="${peliculas.number == i} ? 'active' : ''">
-                            <a th:href="@{${'/cartelera?page=' + i}}" class="page-link"
+                            <a th:href="@{${'/administracion?page=' + i}}" class="page-link"
                                 th:style="${peliculas.number == i} ? 'background-color: #e50246; color: white;' : 'color: #e50246;'"
                                 th:text="${i + 1}"></a>
                         </li>
                         <li th:if="${peliculas.hasNext()}" class="page-item">
-                            <a th:href="@{${'/cartelera?page=' + (peliculas.number + 1)}}" aria-label="Next"
+                            <a th:href="@{${'/administracion?page=' + (peliculas.number + 1)}}" aria-label="Next"
                                 class="page-link page-container" style="background-color: white; color: #e50246;">
                                 <span aria-hidden="true">&raquo;</span>
                             </a>

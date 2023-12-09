@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #24262B !important;
+    height: 100vh;
+}
+
+.contenedor {
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+}
+
+.e {
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    padding-left: 40px;
+}
+
+.e button {
+    border: none;
+    border-radius: 100%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 40px;
+
+    background-color: #E50246;
+    font-size: 20px;
+    font-weight: 500;
+    font-family: 'Josefin Sans', sans-serif;
+    color: white;
+}
+
+.e button:hover,
+.e button:focus {
+    background-color: #E50246 !important;
+    border: none !important;
+
+}
+
+.contenedor-form {
+    display: flex;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    /* box-shadow: 0 0 10px rgba(255, 255, 255, 1); */
+    /* Box shadow blanco y suave */
+    border-radius: 30px;
+
+}
+
+.contenedor img {
+    width: 500px;
+    object-fit: cover;
+    border-bottom-left-radius: 30px;
+    border-top-left-radius: 30px;
+    transform: scaleX(-1);
+}
+
+.b {
+    height: 600px;
+
+    padding: 15px 40px 15px 40px;
+    background-color: white;
+    border-bottom-left-radius: 30px;
+    border-top-left-radius: 30px;
+}
+
+.b h1 {
+
+    font-family: 'Montserrat', sans-serif;
+    font-size: 35px;
+    padding: 15px;
+    margin-top: 20px;
+    font-weight: 800;
+    text-transform: uppercase;
+    background-color: #24262B;
+    color: white;
+}
+
+form {
+
+    margin-top: 20px;
+    padding: 15px;
+}
+
+.form-group input {
+
+    font-family: 'Josefin Sans', sans-serif;
+    padding-left: 5px !important;
+    font-size: 18px;
+
+    transition: 0.6s all ease;
+}
+
+.form-group input {
+    display: block;
+    font-size: 18px;
+    border: none;
+    outline: none !important;
+    border-bottom: 2px solid black;
+}
+
+.form-group label {
+
+    font-size: 20px;
+    font-weight: 700;
+    font-family: 'Josefin Sans', sans-serif;
+    margin-bottom: 5px;
+    width: 100%;
+
+    margin-top: 5px;
+}
+
+.ae {
+    display: flex;
+}
+
+.et {
+    width: 100%;
+}
+
+.registro {
+    color: #E50246;
+    text-decoration: none;
+    font-size: 17px;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.spn {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.pt {
+    width: 90%;
+}
+
+.at {
+    width: 100%;
+}
+
+.form-butto {
+    margin-top: 20px;
+}
+
+.form-butto button {
+    height: 45px;
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    font-family: 'Josefin Sans', sans-serif;
+    background-color: #E50246;
+    border: none;
+    width: 100%;
+
+}
+
+.form-butto button:focus,
+.form-butto button:hover {
+    background-color: rgba(202, 13, 70, 0.979);
+    border: none;
+}

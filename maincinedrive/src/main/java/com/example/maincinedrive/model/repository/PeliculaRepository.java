@@ -20,4 +20,5 @@ public interface PeliculaRepository extends JpaRepository<Pelicula, Integer> {
 
     List<Pelicula> findByFechaEstrenoBeforeAndFechaEstrenoIsNotNull(LocalDate fechaEstreno);
 
+    Pelicula findByTitulo(String titulo);
 }

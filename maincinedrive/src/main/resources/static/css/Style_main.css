@@ -139,6 +139,26 @@
   font-size: 22px;
 }
 
+.login__conteiner h3 {
+  margin-top: 5px;
+  padding: 2px 10px;
+  background: white;
+  border-radius: .75rem;
+  transition: 0.4s all ease;
+}
+
+.login__conteiner h3:hover {
+  background: rgba(255, 255, 255, 0.877);
+}
+
+.login__conteiner h3 a {
+  font-size: 30px;
+  font-weight: 300 !important;
+  font-family: "Josefin Sans" !important;
+  text-decoration: none;
+  color: black;
+}
+
 .div__logo {
   display: flex;
   align-items: center;
@@ -835,7 +855,7 @@ footer ul {
 .form-container {
 
   border-radius: 30px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 
 .form-container form {
@@ -1366,10 +1386,71 @@ footer ul {
 }
 
 .head-modal h2 {
-  background-color: #e50246;
+  background-color: #24262B;
   padding: 20px;
   font-family: Montserrat, sans-serif;
   font-weight: 800;
   font-size: 30px;
   color: white;
+}
+
+
+/*Login - Register*/
+.login__conteiner__login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  list-style: none;
+}
+
+
+
+.login__conteiner__login button,
+.login__conteiner__login button:focus {
+  font-size: 20px;
+  background-color: white;
+  min-width: 150px;
+  transition: 0.6s all ease;
+  color: black;
+
+}
+
+.login__conteiner__login button:hover {
+  background-color: white;
+  color: black;
+
+}
+
+.no-dropdown-arrow .btn::after {
+  display: none !important;
+}
+
+.nav__right {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.login__conteiner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login__conteiner button {
+  min-width: 150px;
+  background: #e50246;
+  border: none;
+  color: white;
+  font-size: 20px;
+}
+
+.login__conteiner button:hover,
+.login__conteiner button:focus {
+  min-width: 150px;
+  background: #e50246;
+  border: none;
+  color: white;
+  font-size: 20px;
 }

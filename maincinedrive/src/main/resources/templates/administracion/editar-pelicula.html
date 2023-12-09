@@ -17,7 +17,7 @@
         <div class="form-container">
             <h1>Formulario <span style="color: #E50246;">Editar Pelicula</span></h1>
             <form action="" method="post" th:object="${pelicula}" enctype="multipart/form-data">
-
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
                 <div class="form-card-1 form-card">
                     <label for="titulo">Titulo: </label>
                     <input type="text" id="titulo" autocomplete="off" th:field="*{titulo}">

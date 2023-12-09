@@ -27,7 +27,7 @@ import com.example.maincinedrive.model.services.AlmacenServicesImpl;
 import jakarta.persistence.EntityNotFoundException;
 
 @Controller
-@RequestMapping("/cartelera")
+@RequestMapping("/administracion")
 public class CarteleraController {
 
     @Autowired
@@ -46,7 +46,7 @@ public class CarteleraController {
     public ModelAndView verCarteleraPage(@PageableDefault(sort = "titulo", size = 5) Pageable pageable) {
 
         Page<Pelicula> peliculas = peliculaRepository.findAll(pageable);
-        return new ModelAndView("cartelera/listado-pelicula")
+        return new ModelAndView("administracion/listado-pelicula")
                 .addObject("peliculas", peliculas);
 
     }
@@ -60,7 +60,7 @@ public class CarteleraController {
     public ModelAndView mostrarFormularioNuevaPelicula() {
         List<Genero> generos = generoRepository.findAll(Sort.by("titulo"));
         List<Categoria> categorias = categoriaRepository.findAll();
-        return new ModelAndView("cartelera/nueva-pelicula")
+        return new ModelAndView("administracion/nueva-pelicula")
                 .addObject("pelicula", new Pelicula())
                 .addObject("generos", generos)
                 .addObject("categoria", categorias);
@@ -75,7 +75,7 @@ public class CarteleraController {
             List<Genero> generos = generoRepository.findAll(Sort.by("titulo"));
             List<Categoria> categorias = categoriaRepository.findAll();
 
-            return new ModelAndView("cartelera/nueva-pelicula")
+            return new ModelAndView("administracion/nueva-pelicula")
                     .addObject("pelicula", pelicula)
                     .addObject("generos", generos)
                     .addObject("categoria", categorias);
@@ -85,7 +85,7 @@ public class CarteleraController {
         pelicula.setRutaPortada(rutaPortada);
         peliculaRepository.save(pelicula);
 
-        return new ModelAndView("redirect:/cartelera");
+        return new ModelAndView("redirect:/administracion");
 
     }
 
@@ -97,7 +97,7 @@ public class CarteleraController {
         List<Genero> generos = generoRepository.findAll(Sort.by("titulo"));
         List<Categoria> categorias = categoriaRepository.findAll();
 
-        return new ModelAndView("cartelera/editar-pelicula")
+        return new ModelAndView("administracion/editar-pelicula")
                 .addObject("pelicula", pelicula)
                 .addObject("generos", generos)
                 .addObject("categoria", categorias);
@@ -109,7 +109,7 @@ public class CarteleraController {
         if (bindingResult.hasErrors()) {
             List<Genero> generos = generoRepository.findAll(Sort.by("titulo"));
             List<Categoria> categorias = categoriaRepository.findAll();
-            return new ModelAndView("cartelera/editar-pelicula")
+            return new ModelAndView("administracion/editar-pelicula")
                     .addObject("pelicula", pelicula)
                     .addObject("generos", generos)
                     .addObject("categoria", categorias);
@@ -132,7 +132,7 @@ public class CarteleraController {
         }
         peliculaRepository.save(peliculaDB);
 
-        return new ModelAndView("redirect:/cartelera");
+        return new ModelAndView("redirect:/administracion");
 
     }
 
@@ -144,7 +144,7 @@ public class CarteleraController {
 
         peliculaRepository.delete(pelicula);
         almacenServicesImpl.eliminarArchivo(pelicula.getRutaPortada());
-        return "redirect:/cartelera";
+        return "redirect:/administracion";
 
     }
 }
