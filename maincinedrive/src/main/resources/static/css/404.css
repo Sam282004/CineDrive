@@ -1,0 +1,122 @@
+.container {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(2, auto);
+    grid-template-areas:
+        ". container-groot container-text-groot container-text-groot . ."
+        ". container-groot . . container-deadpool container-text-deadpool";
+    padding-top: 4em;
+    margin-top: 3em;
+}
+
+.container-groot {
+    grid-area: container-groot;
+    padding-top: 2.5em;
+    position: relative;
+}
+
+.container-groot img {
+    height: 359px;
+    width: auto;
+    position: absolute;
+    bottom: 5px;
+}
+
+.container-text-groot {
+    grid-area: container-text-groot;
+}
+
+.container-text-groot p {
+    font-size: 2.5em;
+    text-transform: none;
+    margin: 0;
+}
+
+.container-deadpool {
+    grid-area: container-deadpool;
+}
+
+.container-deadpool img {
+    height: 260px;
+    width: auto;
+}
+
+.container-text-deadpool {
+    grid-area: container-text-deadpool;
+    position: relative;
+}
+
+.container-text-deadpool p {
+    font-size: 1.1em;
+    text-transform: none;
+    position: absolute;
+    left: -7.5em;
+    text-align: center;
+}
+
+.container-text-deadpool a {
+    color: cornflowerblue;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    .marvel-master-card img {
+        height: 2.5em;
+    }
+
+    .container {
+        grid-template-areas:
+            "container-groot container-groot container-text-groot container-text-groot container-text-groot ."
+            "container-groot container-groot . . container-deadpool container-text-deadpool";
+        padding: 3em;
+    }
+
+    .container-groot img {
+        bottom: -45px;
+    }
+
+    .container-text-deadpool p {
+        left: -6em;
+    }
+}
+
+@media screen and (max-width: 426px) {
+
+    .sign-in,
+    .marvel-master-card {
+        display: none;
+    }
+
+    .items-menu ul {
+        text-align: center;
+    }
+
+    .container {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        grid-template-areas:
+            "container-text-groot"
+            "container-groot"
+            " container-text-deadpool"
+            "container-deadpool";
+        padding: 1em;
+    }
+
+    .container-groot {
+        display: flex;
+        justify-content: center;
+    }
+
+    .container-text-groot p {
+        text-align: center;
+    }
+
+    .container-groot img {
+        position: initial;
+        bottom: 5px;
+    }
+
+    .container-text-deadpool p {
+        position: initial;
+    }
+}

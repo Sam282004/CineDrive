@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+
+.main-card-sede {
+
+    margin: 100px 0px 100px 0px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 70px;
+    justify-content: center
+}
+
+.card-sede a {
+    transition: 300ms all ease;
+}
+
+.card-sede img {
+    height: 300px;
+
+    object-fit: cover;
+
+}
+
+.card-sede a:hover {
+    filter: brightness(0.8);
+}
+
+.card-sede {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+    border-radius: 20px;
+}
+
+.card-sede a {
+    border: none;
+    outline: none;
+    text-decoration: none;
+}
+
+.card-sede h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 30px;
+    padding: 10px;
+    color: white;
+    text-align: center;
+    border-radius: 20px 20px 0px 0px;
+    background-color: #24262B;
+    text-transform: uppercase;
+}
+
+.contenido {
+    padding: 20px;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.contenido span {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.contenido h3 {
+    padding: 10px;
+
+    border-radius: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 30px;
+    color: #E50246;
+}
+
+.contenido p {
+    font-size: 18px;
+}
+
+
+.contenido p:not(:nth-child(2)) {
+    font-weight: bold;
+}

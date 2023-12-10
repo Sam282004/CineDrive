@@ -5,7 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Lob;
+
 import jakarta.persistence.Table;
 
 @Entity
@@ -23,26 +23,30 @@ public class Sedes {
 
     private String horarios_operacion;
 
-    @Lob
-    @Column(name = "imagen", columnDefinition = "LONGBLOB")
-    private byte[] imagen;
+    private String imagen;
+
+    @Column(length = 2000)
+    private String descripcin;
 
     public Sedes() {
     }
 
-    public Sedes(Integer id, String nombre, String direccion, String horarios_operacion, byte[] imagen) {
+    public Sedes(String nombre, String direccion, String horarios_operacion, String imagen, String descripcin) {
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.horarios_operacion = horarios_operacion;
+        this.imagen = imagen;
+        this.descripcin = descripcin;
+    }
+
+    public Sedes(Integer id, String nombre, String direccion, String horarios_operacion, String imagen,
+            String descripcin) {
         this.id = id;
         this.nombre = nombre;
         this.direccion = direccion;
         this.horarios_operacion = horarios_operacion;
         this.imagen = imagen;
-    }
-
-    public Sedes(String nombre, String direccion, String horarios_operacion, byte[] imagen) {
-        this.nombre = nombre;
-        this.direccion = direccion;
-        this.horarios_operacion = horarios_operacion;
-        this.imagen = imagen;
+        this.descripcin = descripcin;
     }
 
     public Integer getId() {
@@ -77,12 +81,20 @@ public class Sedes {
         this.horarios_operacion = horarios_operacion;
     }
 
-    public byte[] getImagen() {
+    public String getImagen() {
         return imagen;
     }
 
-    public void setImagen(byte[] imagen) {
+    public void setImagen(String imagen) {
         this.imagen = imagen;
+    }
+
+    public String getDescripcin() {
+        return descripcin;
+    }
+
+    public void setDescripcin(String descripcin) {
+        this.descripcin = descripcin;
     }
 
 }

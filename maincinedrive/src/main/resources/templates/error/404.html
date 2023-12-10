@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.Thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="shortcut icon"
+        href="https://cinemarkla.modyocdn.com/uploads/ad836c7a-c6ea-4f42-94e4-76bb18d92889/C32x32/Cinemark_Lettermark_RGB_Red.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--Style-->
+    <link rel="stylesheet" th:href="@{/css/Style_main.css}" />
+    <!--SweetAlert-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.all.min.js"></script>
+    <!--FontAwesome-->
+    <script src="https://kit.fontawesome.com/0ec2586e1a.js" crossorigin="anonymous"></script>
+    <!--Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <!-- fancybox -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <!-- Select2 -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <link rel="stylesheet" th:href="@{/css/404.css}" />
+    <title>404</title>
+</head>
+
+<body>
+
+    <header class="header" th:insert="fragments/header_static :: header_static"></header>
+    <section class="container" style="padding-top: 150px; font-family: Righteous, cursive;">
+        <div class="container-groot">
+            <img th:src="@{/images/groot-02.png}" alt="">
+        </div>
+        <div class="container-text-groot">
+            <p>Hmm...Groot, groot..<br>
+                groot, groot?<br>
+                groot.
+            </p>
+        </div>
+        <div class="container-deadpool">
+            <img th:src="@{/images/deadpool-02.png}" alt="">
+        </div>
+        <div class="container-text-deadpool">
+            <p>Psst... No seas tonto. Es una<br>
+                distracción que no pueden encontrar esta pagina,<br>
+                y obviamente no lo haces entender Groot,<br>
+
+                Solo Haz Click<a href="#" style="color: #ED1D24;"> Aqui</a></p>
+        </div>
+    </section>
+
+
+</body>
+
+</html>

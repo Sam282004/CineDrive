@@ -10,8 +10,8 @@
     <link rel="stylesheet" th:href="@{/css/Style_main.css}" />
     <link rel="stylesheet" th:href="@{/css/modal.css}" />
     <!--SweetAlert-->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="sweetalert2.all.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.all.min.js"></script>
     <!--FontAwesome-->
     <script src="https://kit.fontawesome.com/0ec2586e1a.js" crossorigin="anonymous"></script>
     <!--Bootstrap-->
@@ -70,21 +70,33 @@
                         </svg> Ver trailer
                     </a>
                 </div>
-                <div id="carrito" style="display: none;">
-                    <h3>Carrito de Compras</h3>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Producto</th>
-                                <th>Cantidad</th>
-                                <th>Precio Unitario</th>
-                                <th>Total</th>
-                            </tr>
-                        </thead>
-                        <tbody id="carritoBody">
-                            <!-- Aquí se mostrarán los productos del carrito -->
-                        </tbody>
-                    </table>
+                <div id="carrito" style="display:none;">
+                    <div class="carrito-title">
+                        <h3>Carrito de Compras <i class="fa-solid fa-cart-arrow-down" style="color: #e50246;"></i></h3>
+                    </div>
+                    <div class="carrito-body">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Producto</th> <!-- Nueva columna de imágenes -->
+                                    <th>Descripcion</th>
+                                    <th>Cantidad</th>
+                                    <th>Precio Unitario</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody id="carritoBody">
+                                <!-- Aquí se mostrarán los productos del carrito -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="carrito-total-pago">
+                        <div class="content-total-pago">
+                            <h5 id="totalGeneral">Total General: <span class="price-pol">$0.00</span></h5>
+
+                            <button class="carrito-pagar" id="idPagar">Pagar</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -119,44 +131,82 @@
                 <div class="Aperitivos-main">
                     <h3 class="tittle-aperitivo">Aperitivos:</h3>
                     <div class="contenedor-comida">
-
                         <div id="comida" name="comida" class="comida-container" th:each="comida : ${comidas}">
+                            <div id="infoPelicula-asiento" th:data-id="${pelicula.id}"
+                                th:data-rutaImagen="${pelicula.rutaPortada}" style="display: none;"></div>
                             <div class="comida-tarjeta">
                                 <div class="img-comida">
-                                    <img th:src="@{/images/confiteria/{filename}(filename=*{comida.imageUrl})}" alt=""
-                                        class="">
+                                    <div th:id="'infoPelicula-comida-'+ ${comida.idComida}"
+                                        th:data-id-comida="${comida.idComida}"
+                                        th:data-rutaImagen-comida="${comida.imageUrl}" style="display: none;"></div>
+                                    <img th:src="@{/images/confiteria/{filename}(filename=*{comida.imageUrl})}" alt="">
                                 </div>
-
-
                                 <div class="card-comida-info">
                                     <div class="card-title">
                                         <h4 th:text="${comida.nombre}"></h4>
                                     </div>
-                                    <div class="card-context">
-                                        <p th:text="${comida.descripcion}"></p>
+                                    <div class="main-context">
+                                        <div class="card-context">
+                                            <p th:text="${comida.descripcion}"></p>
+                                        </div>
+                                        <div class="card-price">
+                                            <div class="contet-price">
+                                                <p th:text="'S/.' + ${comida.precio}"></p>
+
+                                            </div>
+                                            <div class="card-compra">
+                                                <input type="number" th:id="'cantidadComida-' + ${comida.idComida}"
+                                                    value="1" min="1" max="10">
+                                                <!-- Agrega los atributos data-* aquí -->
+                                                <button type="button" onclick="seleccionarComida(this)"
+                                                    th:data-idcomida="${comida.idComida}"
+                                                    th:data-nombrecomida="${comida.nombre}"
+                                                    th:data-preciocomida="${comida.precio}">
+                                                    <i class="fa-solid fa-circle-check" style="color: #40dc1c;"></i>
+                                                </button>
+                                            </div>
+
+
+                                        </div>
                                     </div>
-                                    <div class="card-price">
-                                        <p th:text="${comida.precio}"></p>
-                                        <input type="number" id="cantidadComida" value="0" min="0" max="10">
-                                    </div>
+
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
+                <div class="content-button-carrito">
+                    <button type="button" onclick="mostrarCarrito()"><i class="fa-solid fa-cart-arrow-down"
+                            style="color: #e50246;"></i></button>
+                </div>
 
-                <button type="button" onclick="carritoCompras()">Ir al carrito</button>
             </form>
 
         </div>
     </div>
     <footer th:insert="fragments/footer :: footer"></footer>
     <script th:inline="javascript">
+        var idPagar = document.getElementById("idPagar");
+        idPagar.addEventListener("click", Pagar);
+        function Pagar() {
+            Swal.fire({
+                title: "<span style='font-size: 44px; font-weight: bold; color: white; font-family: Righteous, cursive;'>Buen Trabajo!</span>",
+                html: "<span style='font-size: 28px; color:white; font-family: Righteous, cursive;'>Pago Completado</span>",
+                icon: "success",
+                iconColor: "#00AD4E",
+                background: "#151515",
+                confirmButtonColor: "#ec1d24",
+                confirmButtonText: "<span style='font-size: 28px; color:white; font-family: Righteous, cursive;'>Hecho</span>"
+
+            });
+        }
+        var precioUnitarioAsiento = 20.00; // Precio fijo para todos los asientos
+        var tusDatosDeComida = /*[[${comidas}]]*/[];
         var sedes = /*[[${sedes}]]*/[];
-        var asientosPorSede = /*[[${asientos}]]*/ {};
         var asientosPorSede = /*[[${asientosPorSede}]]*/ {};
-        console.log('Asientos por sede:', asientosPorSede);
+
+        console.log("Comidas:", tusDatosDeComida);
         console.log("sedes:", sedes);
         console.log("asientosPorSedeP:", asientosPorSede);
 
@@ -228,11 +278,11 @@
                     divAsiento.id = 'asiento_' + idSede + '_' + asiento.idAsiento;
 
                     // Modificar la línea siguiente para incluir el icono
-                    divAsiento.innerHTML = asiento.estado === 'OCUPADO'
-                        ? '<i class="fa-solid fa-car" style="color: white;"></i>'
-                        : '<i class="fa-solid fa-car" style="color: #24262b;"></i>';
+                    divAsiento.innerHTML = asiento.estado === 'OCUPADO' ?
+                        '<i class="fa-solid fa-car" style="color: white;"></i>' :
+                        '<i class="fa-solid fa-car" style="color: #24262b;"></i>';
 
-                    agregarEventoClic(divAsiento, asiento, idSede);
+                    agregarEventoClic(divAsiento, asiento, idSede, asiento.nombre);
 
                     if (asiento.estado === 'OCUPADO') {
                         divAsiento.classList.add('asiento-ocupado');
@@ -244,31 +294,79 @@
                 // Adjuntar el contenedor de asientos al DOM en el lugar correcto
                 contenedorAsientos.appendChild(divSede);
             }
-
         }
+
         function agregarEventoClic(divAsiento, asiento, idSede) {
             divAsiento.id = 'asiento_' + idSede + '_' + asiento.idAsiento;
             divAsiento.addEventListener('click', function () {
-                seleccionarAsiento(asiento.idAsiento, idSede);
+                seleccionarAsiento(asiento.idAsiento, idSede, asiento.nombreAsiento);
             });
         }
-
 
         var seleccionUsuario = {
             idAsiento: null,
             idSede: null,
-            cantidadComida: 0,
-            // Otros campos según tus necesidades
+            nombreAsiento: null,
+            productosComida: [],
         };
 
-        function seleccionarAsiento(idAsiento, idSede) {
-            seleccionUsuario.idAsiento = idAsiento;
-            seleccionUsuario.idSede = idSede;
-            // ... (otras acciones)
+        function seleccionarAsiento(idAsiento, idSede, nombreAsiento) {
+            console.log('ID del asiento seleccionado:', idAsiento);
+            console.log('ID de la sede:', idSede);
+            console.log('Nombre del asiento seleccionado:', nombreAsiento);
+
+            var elementoAsiento = document.getElementById('asiento_' + idSede + '_' + idAsiento);
+
+            if (elementoAsiento.classList.contains('asiento-seleccionado')) {
+                elementoAsiento.classList.remove('asiento-seleccionado');
+                seleccionUsuario.idAsiento = null;
+                seleccionUsuario.idSede = null;
+                seleccionUsuario.nombreAsiento = null;
+            } else {
+                elementoAsiento.classList.add('asiento-seleccionado');
+                seleccionUsuario.idAsiento = idAsiento;
+                seleccionUsuario.idSede = idSede;
+                seleccionUsuario.nombreAsiento = nombreAsiento;
+                precioUnitarioAsiento = obtenerPrecioAsiento(idAsiento, idSede);
+            }
+
+            // Verifica si la información se está registrando correctamente
+            console.log('Selección del usuario:', seleccionUsuario);
         }
-        function actualizarCantidadComida() {
-            var cantidadComidaSeleccionada = parseInt(document.getElementById('cantidadComida').value);
-            seleccionUsuario.cantidadComida = cantidadComidaSeleccionada;
+
+        function seleccionarComida(button) {
+            var idComida = button.getAttribute('data-idcomida');
+            var nombreComida = button.getAttribute('data-nombrecomida');
+            var precioUnitarioComida = parseFloat(button.getAttribute('data-preciocomida'));
+
+            // Construir el id del input de cantidad
+            var inputCantidadId = 'cantidadComida-' + idComida;
+
+            // Obtén la cantidad directamente del input
+            var cantidadComidaElement = document.getElementById(inputCantidadId);
+
+            if (cantidadComidaElement) {
+                var cantidadComida = parseInt(cantidadComidaElement.value);
+                var productoExistente = seleccionUsuario.productosComida.find(producto => producto.idComida === idComida);
+
+                if (productoExistente) {
+                    // Si el producto ya está en el carrito, actualiza la cantidad
+                    productoExistente.cantidad += cantidadComida;
+                } else {
+                    // Si el producto no está en el carrito, agrégalo con la cantidad seleccionada
+                    seleccionUsuario.productosComida.push({
+                        idComida: idComida,
+                        nombreComida: nombreComida,
+                        cantidad: cantidadComida,
+                        precioUnitario: precioUnitarioComida,
+                    });
+                }
+                console.log('Carrito actualizado:', seleccionUsuario.productosComida);
+                // Luego de actualizar el carrito, puedes llamar a la función para mostrar el carrito
+                mostrarCarrito();
+            } else {
+                console.error('No se pudo encontrar el elemento para la cantidad de comida:', inputCantidadId);
+            }
         }
 
         function mostrarCarrito() {
@@ -278,28 +376,62 @@
             var carritoBody = document.getElementById('carritoBody');
             carritoBody.innerHTML = '';
 
-            // Crear filas de la tabla con la información del carrito
-            // Puedes utilizar un bucle y los datos almacenados en seleccionUsuario
+            var totalAsiento = 0;
 
-            // Ejemplo de cómo agregar una fila (debes adaptar según tu lógica):
-            var fila = document.createElement('tr');
-            var producto = 'Asiento'; // Cambiar según tu lógica
-            var cantidad = seleccionUsuario.cantidadComida; // Cambiar según tu lógica
-            var precioUnitario = 10.99; // Obtener el precio real según el producto seleccionado
-            var total = cantidad * precioUnitario;
+            if (seleccionUsuario.idAsiento && seleccionUsuario.idSede) {
+                var nombreAsiento = seleccionUsuario.nombreAsiento;
+                var nombreSede = sedes.find(sede => sede.id == seleccionUsuario.idSede).nombre;
+                // Obtén la información de la película desde el bloque div
+                var infoPelicula = document.getElementById('infoPelicula-asiento');
+                var rutaImagenAsiento = infoPelicula.getAttribute('data-rutaImagen');
+                var filaAsiento = document.createElement('tr');
+                filaAsiento.innerHTML = `<td> <a href="/assets/${rutaImagenAsiento}" data-fancybox> <img src="/assets/${rutaImagenAsiento}" alt="Imagen Asiento" height="" class="img-thumbnail w-100"> </a></td>
+                <td>${nombreAsiento} - ${nombreSede}</td>
+                <td>1</td>
+                <td>${precioUnitarioAsiento.toFixed(2)}</td>
+                <td>${(1 * precioUnitarioAsiento).toFixed(2)}</td>`;
+                carritoBody.appendChild(filaAsiento);
 
-            fila.innerHTML = `<td>${producto}</td>
-                      <td>${cantidad}</td>
-                      <td>${precioUnitario}</td>
-                      <td>${total}</td>`;
+                totalAsiento = 1 * precioUnitarioAsiento;
+            }
 
-            carritoBody.appendChild(fila);
-        }
-        function carritoCompras() {
-            // ... (otras acciones)
+            var totalComida = 0;
 
-            // Mostrar la información de la selección del usuario en el carrito
-            mostrarCarrito();
+            for (var i = 0; i < seleccionUsuario.productosComida.length; i++) {
+
+                var productoComida = seleccionUsuario.productosComida[i];
+                var nombreComida = productoComida.nombreComida;
+                var cantidadComida = productoComida.cantidad;
+
+                // Construye el identificador específico para la información de la película de la comida actual
+                var infoPeliculaComidaId = 'infoPelicula-comida-' + productoComida.idComida;
+
+                // Obtén la información de la película desde el bloque div específico para la comida
+                var infoPeliculaComida = document.getElementById(infoPeliculaComidaId);
+                var rutaImagenComida = infoPeliculaComida.getAttribute('data-rutaImagen-comida');
+
+                var filaComida = document.createElement('tr');
+                filaComida.innerHTML = `<td><a data-fancybox href="/images/confiteria/${rutaImagenComida}"><img src="/images/confiteria/${rutaImagenComida}" alt="Imagen Asiento" class="img-thumbnail w-100"></td>
+                <td>${nombreComida}</td>
+                <td>${cantidadComida}</td>
+                <td>${productoComida.precioUnitario.toFixed(2)}</td>
+                <td>${(cantidadComida * productoComida.precioUnitario).toFixed(2)}</td>`;
+                carritoBody.appendChild(filaComida);
+
+                totalComida += cantidadComida * productoComida.precioUnitario;
+
+            }
+            var totalGeneral = totalAsiento + totalComida;
+
+            var filaTotal = document.createElement('tr');
+            filaTotal.innerHTML = `<td colspan="3"><strong>Total</strong></td>
+            <td>${totalGeneral.toFixed(2)}</td>`;
+            carritoBody.appendChild(filaTotal);
+
+            // Actualizar el total general en el carrito
+            document.getElementById('totalGeneral').innerText = 'Total General: $' + totalGeneral.toFixed(2);
+            // closeCompraModal();
+
         }
 
     </script>
